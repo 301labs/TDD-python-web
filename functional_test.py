@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import unittest
 
 class NewVisitor(unittest.TestCase):
@@ -18,10 +19,10 @@ class NewVisitor(unittest.TestCase):
         #她注意到网页的标题和头部都包含“To-Do"这个词
         self.assertIn('To-Do', self.brower.title)
         header_text = self.brower.find_element_by_tag_name('h1').text
-        self.assertIN('To-Do', header_text)
+        self.assertIn('To-Do', header_text)
         
         #应用邀她输入一个待办事项
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.brower.find_element_by_id('id_new_item')
         self.assertEqual(
                 inputbox.get_attribute('placeholder'),
                 'Enter a to-do item'
@@ -38,7 +39,7 @@ class NewVisitor(unittest.TestCase):
         table = self.brower.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-                any(row.text == '1:Buy peacock feathers' for row in rows)
+                any(row.text == '1:Buy peacock feathers' for row in rows), "New to-do item did not appear in table"
                 )
 
 
