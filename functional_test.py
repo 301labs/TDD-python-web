@@ -16,7 +16,7 @@ class NewVisitor(unittest.TestCase):
         self.brower.get('http://localhost:8000')
         
         #她注意到网页的标题和头部都包含“To-Do"这个词
-        self.assertIn('To-Do',self.brower.title)
+        self.assertIn('To-Do', self.brower.title)
         self.fail('Finish the test')
         
         #应用邀她输入一个待办事项
